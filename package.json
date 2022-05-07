@@ -6,10 +6,13 @@
     "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@solana/spl-token": "^0.2.0",
+    "@solana/web3.js": "^1.41.4",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "@tinymce/tinymce-react": "^4.0.0",
+    "buffer-layout": "^1.2.2",
     "firebase": "^9.7.0",
     "framer-motion": "^6.3.3",
     "html-react-parser": "^1.4.12",
@@ -22,7 +25,8 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "screenfull": "^6.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zebecprotocol-sdk": "^1.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
