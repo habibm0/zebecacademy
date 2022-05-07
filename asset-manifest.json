@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/zebecacademy/static/css/main.50131c72.css",
+    "main.js": "/zebecacademy/static/js/main.b09de4db.js",
+    "static/media/solidtyandnft.svg": "/zebecacademy/static/media/solidtyandnft.0da4aba2a532cf42259a70c5f142cddb.svg",
+    "static/media/joinagroup.svg": "/zebecacademy/static/media/joinagroup.c11bf50c8f4a1f22eb91e849ca73fdad.svg",
+    "static/media/story-three.jpg": "/zebecacademy/static/media/story-three.66f6154117ea52d62956.jpg",
+    "static/media/story-one.jpg": "/zebecacademy/static/media/story-one.66397c930b1392a14538.jpg",
+    "static/media/notfound.svg": "/zebecacademy/static/media/notfound.cda35d7489a4d655d317cdf81278c540.svg",
+    "static/media/start-group.svg": "/zebecacademy/static/media/start-group.47821ec6dc1a5a0f39dda9048a682012.svg",
+    "static/media/ticket.svg": "/zebecacademy/static/media/ticket.c23236d510eff848ea6fa82d78698788.svg",
+    "static/media/bg.svg": "/zebecacademy/static/media/bg.77402f592a8a3e5e68af728fc45e71fb.svg",
+    "index.html": "/zebecacademy/index.html",
+    "main.50131c72.css.map": "/zebecacademy/static/css/main.50131c72.css.map",
+    "main.b09de4db.js.map": "/zebecacademy/static/js/main.b09de4db.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.50131c72.css",
+    "static/js/main.b09de4db.js"
+  ]
+}
