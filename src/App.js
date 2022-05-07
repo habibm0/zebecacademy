@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./Container/Home";
-import Login from "./Container/Login";
 import HomePage from "./pages/HomePage";
 import { fetchUser, userAccessToken } from "./utils/fetchUser";
 
@@ -12,7 +11,7 @@ const App = () => {
   useEffect(() => {
     const accessToken = userAccessToken();
     if (!accessToken) {
-      navigate("/login", { replace: true });
+      navigate("/welcome", { replace: true });
     } else {
       const [userInfo] = fetchUser();
       setUser(userInfo);
