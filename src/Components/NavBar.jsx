@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { getProvider } from "zebecprotocol-sdk";
 
-import logo from "../img/logo.png";
-import logo_dark from "../img/logo_dark.png";
 import { Link, useNavigate } from "react-router-dom";
 // prettier-ignore
-import { Box, Flex, Image, Input, InputGroup, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Input, InputGroup, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { IoAdd, IoLogOut, IoMoon, IoSearch, IoSunny } from "react-icons/io5";
 import zebeclogo from "../assets/zebec-logo.jpg";
 
 const NavBar = ({ user, setsearchTerm, searchTerm }) => {
+  const walletConnect = async () => getProvider().then();
+
   const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
   return (
@@ -34,39 +35,10 @@ const NavBar = ({ user, setsearchTerm, searchTerm }) => {
         </Flex>
       </Link>
 
-      {/* <InputGroup mx={6} width="60vw">
-        <InputLeftElement
-          pointerEvents="none"
-          children={<IoSearch fontSize={25} />}
-        />
-        <Input
-          type="text"
-          placeholder="Search..."
-          fontSize={18}
-          fontWeight="medium"
-          variant={"filled"}
-          value={searchTerm}
-          onChange={(e) => setsearchTerm(e.target.value)}
-          onFocus={() => navigate("/search")}
-        />
-      </InputGroup> */}
-
       <Flex justifyContent={"center"} alignItems="center">
-        {/* <Flex
-          width={"40px"}
-          height="40px"
-          justifyContent={"center"}
-          alignItems="center"
-          cursor={"pointer"}
-          borderRadius="5px"
-          onClick={toggleColorMode}
-        >
-          {colorMode == "light" ? (
-            <IoMoon fontSize={25} />
-          ) : (
-            <IoSunny fontSize={25} />
-          )}
-        </Flex> */}
+        <Flex cursor={"pointer"} onClick={walletConnect}>
+          <Button variant={"solid"}>Wallet Connect</Button>
+        </Flex>
 
         {/* crerate Btn */}
         <Link to={"/create"}>
