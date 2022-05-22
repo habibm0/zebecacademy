@@ -1,5 +1,9 @@
-import React, { useState }  from "react";
+import React, { useState, useEffect } from "react";
 import { getProvider } from "zebecprotocol-sdk";
+import {
+  PublicKey,
+  Transaction,
+} from "@solana/web3.js";
 
 import { Link, useNavigate } from "react-router-dom";
 // prettier-ignore
@@ -7,9 +11,45 @@ import { Box, Button, Flex, Image, Input, InputGroup, InputLeftElement, Menu, Me
 import { IoAdd, IoLogOut, IoMoon, IoSearch, IoSunny } from "react-icons/io5";
 import zebeclogo from "../assets/zebec-logo.jpg";
 
-const NavBar = ({ user,}) => { 
-  const [connected, setConnected] = useState(false);
-  const walletConnect = async () => await getProvider();
+const NavBar = ({ user, }) => {
+  const [provider, setProvider] = useState(<getProvider />);
+  const [walletKey, setWalletKey] = useState(<getProvider />);
+
+  // detect phantom provider exists
+  useEffect(() => {
+    const provider = getProvider();
+
+    if (provider) setProvider(provider);
+    else setProvider(undefined);
+  }, []);
+
+  /**
+   * @description prompts user to connect wallet if it exists
+   */
+  const connectWallet = async () => {
+    
+    const { solana } = window;
+
+    if (solana) {
+      try {
+        const response = await solana.connect();
+        console.log('wallet account ', response.publicKey.toString());
+        setWalletKey(response.publicKey.toString());
+      } catch (err) {
+        // { code: 4001, message: 'User rejected the request.' }
+      }
+    }
+  };
+
+  const disconnectWallet = async () => {
+    // @ts-ignore
+    // const { solana } = window;
+
+    // if (walletKey && solana) {
+    //   await (solana as PhantomProvider).disconnect();
+    //   setWalletKey(undefined);
+    // }
+  };
 
   const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
@@ -37,8 +77,38 @@ const NavBar = ({ user,}) => {
       </Link>
 
       <Flex justifyContent={"center"} alignItems="center">
-        <Flex cursor={"pointer"} onClick={walletConnect}>
-          <Button variant={"solid"}>Wallet Connect</Button>
+        <Flex cursor={"pointer"} >
+          {provider && walletKey && (
+            <Button
+              variant={'solid'}
+              color='blue.100'
+              onClick={connectWallet}
+            >
+              Connect to Phantom Wallet
+            </Button>
+          )}
+
+          {/* {provider && walletKey && <Button variant={'solid'} color='green'>Connected account {walletKey}</Button>} */}
+
+          {/* <button
+              style={{
+                fontSize: "16px",
+                padding: "15px",
+                fontWeight: "bold",
+                borderRadius: "5px",
+                margin: "15px auto",
+              }}
+              onClick={disconnectWallet}
+            >
+              Disconnect
+            </button> */}
+
+          {!provider && (
+            <p>
+              No provider found. Install{" "}
+              <a href="https://phantom.app/">Phantom Browser extension</a>
+            </p>
+          )}
         </Flex>
 
         {/* crerate Btn */}
