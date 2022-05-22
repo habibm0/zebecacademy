@@ -12,7 +12,7 @@ import { IoAdd, IoLogOut, IoMoon, IoSearch, IoSunny } from "react-icons/io5";
 import zebeclogo from "../assets/zebec-logo.jpg";
 
 const NavBar = ({ user, }) => {
-  const [provider, setProvider] = useState(<getProvider />);
+  const [provider, setProvider] = useState(undefined);
   const [walletKey, setWalletKey] = useState(<getProvider />);
 
   // detect phantom provider exists
@@ -41,15 +41,6 @@ const NavBar = ({ user, }) => {
     }
   };
 
-  const disconnectWallet = async () => {
-    // @ts-ignore
-    // const { solana } = window;
-
-    // if (walletKey && solana) {
-    //   await (solana as PhantomProvider).disconnect();
-    //   setWalletKey(undefined);
-    // }
-  };
 
   const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
@@ -78,36 +69,24 @@ const NavBar = ({ user, }) => {
 
       <Flex justifyContent={"center"} alignItems="center">
         <Flex cursor={"pointer"} >
-          {provider && walletKey && (
+          {provider && !walletKey && (
             <Button
               variant={'solid'}
-              color='blue.100'
+              colorScheme='linkedin'
               onClick={connectWallet}
             >
               Connect to Phantom Wallet
             </Button>
           )}
 
-          {/* {provider && walletKey && <Button variant={'solid'} color='green'>Connected account {walletKey}</Button>} */}
+          {provider && walletKey && <Button variant={'solid'} color='green'>Connected account {walletKey}</Button>}
 
-          {/* <button
-              style={{
-                fontSize: "16px",
-                padding: "15px",
-                fontWeight: "bold",
-                borderRadius: "5px",
-                margin: "15px auto",
-              }}
-              onClick={disconnectWallet}
-            >
-              Disconnect
-            </button> */}
 
           {!provider && (
-            <p>
+            <Button>
               No provider found. Install{" "}
               <a href="https://phantom.app/">Phantom Browser extension</a>
-            </p>
+            </Button>
           )}
         </Flex>
 
