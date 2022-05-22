@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState }  from "react";
 import { getProvider } from "zebecprotocol-sdk";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -7,8 +7,9 @@ import { Box, Button, Flex, Image, Input, InputGroup, InputLeftElement, Menu, Me
 import { IoAdd, IoLogOut, IoMoon, IoSearch, IoSunny } from "react-icons/io5";
 import zebeclogo from "../assets/zebec-logo.jpg";
 
-const NavBar = ({ user, setsearchTerm, searchTerm }) => {
-  const walletConnect = async () => getProvider().then();
+const NavBar = ({ user,}) => { 
+  const [connected, setConnected] = useState(false);
+  const walletConnect = async () => await getProvider();
 
   const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
@@ -80,7 +81,7 @@ const NavBar = ({ user, setsearchTerm, searchTerm }) => {
               gap={4}
               onClick={() => {
                 localStorage.clear();
-                navigate("/login", { replace: true });
+                navigate("/welcome", { replace: true });
               }}
             >
               Logout <IoLogOut fontSize={20} />

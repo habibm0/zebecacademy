@@ -50,13 +50,13 @@ const UserProfile = () => {
         direction="column"
         alignItems={"center"}
       >
-        <Image
+        {/* <Image
           src={randomImage}
           height={"320px"}
           width="full"
           objectFit={"cover"}
           borderRadius={"md"}
-        />
+        /> */}
 
         <Image
           src={userInfo?.photoURL}

@@ -323,7 +323,7 @@ const VideoPinDetail = () => {
                       aria-label="slider-ex-1"
                       defaultValue={volume * 100}
                       min={0}
-                      max={100}
+                        max={100}
                       size="sm"
                       width={16}
                       mx={2}

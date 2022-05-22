@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { firebaseApp } from "../firebase-config";
 import { categoryFeeds, getAllFeeds } from "../utils/fetchData";
 import Spinner from "../Components/Spinner";
-import { Box, Flex, SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import { VideoPin } from ".";
 import { useParams } from "react-router-dom";
 import NotFound from "./NotFound";

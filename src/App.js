@@ -21,6 +21,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="welcome" element={<HomePage />} />
+      {/* <Route path="welcome" element={<Home />} /> */}
       <Route path="/*" element={<Home user={user} />} />
     </Routes>
   );

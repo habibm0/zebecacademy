@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Flex } from "@chakra-ui/react";
 import {
   Category,
@@ -19,18 +19,22 @@ const Home = ({ user }) => {
       <NavBar user={user} setsearchTerm={setsearchTerm} />
 
       <Flex width={"100vw"}>
-        {/* <Flex
+        <Flex
           direction={"column"}
           justifyContent="start"
           alignItems={"center"}
-          width="8%"
+          width="10%"
+          // bg={'blue.200'}
+          borderRightColor={'blue.200'}
+          borderRightWidth={1.5}
+          ml={2}
         >
           {categories &&
             categories.map((data) => <Category key={data.id} data={data} />)}
-        </Flex> */}
+        </Flex>
 
         <Flex
-          width={"100%"}
+          width={"90%"}
           px={4}
           justifyContent="center"
           alignItems={"center"}
