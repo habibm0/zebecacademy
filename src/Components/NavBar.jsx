@@ -8,28 +8,27 @@ import { IoAdd, IoLogOut, } from "react-icons/io5";
 import zebeclogo from "../assets/zebec-logo.jpg";
 
 const NavBar = ({ user, }) => {
-  const [walletKey, setWalletKey] = useState(<getProvider/>);
+  const [provider, setProvider] = useState();
+  const [walletKey, setWalletKey] = useState();
+
+  useEffect(() => {
+    const provider = getProvider();
+
+    if (provider) setProvider(provider);
+    else setProvider();
+  }, []);
 
   const connectWallet = async () => {
-
-    const { solana } = window;
-    if (solana) {
-      try {
-        const resp = await getProvider();
-        console.log("wallet account", resp.PublicKey.toString())
-        setWalletKey(resp.publicKey.toString());
-
-      } catch (err) {
-        console.log(err)
-        // { code: 4001, message: 'User rejected the request.' }
-      }
+    try {
+      const response = await getProvider()
+      console.log("wallet account ", response.publicKey.toString());
+      setWalletKey(response.publicKey.toString());
+    } catch (err) {
+      // { code: 4001, message: 'User rejected the request.' }
     }
-  };
+  }
 
-  const provider = async () => {
-    const resp = await getProvider()
-    console.log(resp)
-  } 
+
 
   const navigate = useNavigate();
   return (
@@ -59,34 +58,46 @@ const NavBar = ({ user, }) => {
         <Flex cursor={"pointer"} >
         <Button
               variant={'solid'}
-              color='linkedin.100'
-              onClick={provider}
-            >
-              Connected Account {walletKey}
-            </Button>
-          {/* {walletKey(
-
-            <Button
-              variant={'solid'}
-              color='linkedin.100'
+              color='linkedin.400'
               onClick={connectWallet}
             >
               Connect to Phantom Wallet
             </Button>
-          )}
-
-          {!walletKey(
-
-            <Button
-              variant={'solid'}
-              color='linkedin.100'
-            // onClick={provider}
-            >
-              Connected Account {walletKey}
-            </Button>
-          )} */}
+        
 
         </Flex>
+        {provider && !walletKey && (
+          <button
+            style={{
+              fontSize: "16px",
+              padding: "15px",
+              fontWeight: "bold",
+              borderRadius: "5px",
+            }}
+            onClick={connectWallet}
+          >
+            Connect to Phantom Wallet
+          </button>
+        )}
+        {provider && walletKey && (
+          <div>
+            <p>Connected account {walletKey}</p>
+
+            <button
+              style={{
+                fontSize: "16px",
+                padding: "15px",
+                fontWeight: "bold",
+                borderRadius: "5px",
+                margin: "15px auto",
+              }}
+              // onClick={disconnectWallet}
+            >
+              Disconnect
+            </button>
+          </div>
+        )}
+
 
         {/* crerate Btn */}
         <Link to={"/create"}>
