@@ -66,37 +66,8 @@ const NavBar = ({ user, }) => {
         
 
         </Flex>
-        {provider && !walletKey && (
-          <button
-            style={{
-              fontSize: "16px",
-              padding: "15px",
-              fontWeight: "bold",
-              borderRadius: "5px",
-            }}
-            onClick={connectWallet}
-          >
-            Connect to Phantom Wallet
-          </button>
-        )}
-        {provider && walletKey && (
-          <div>
-            <p>Connected account {walletKey}</p>
-
-            <button
-              style={{
-                fontSize: "16px",
-                padding: "15px",
-                fontWeight: "bold",
-                borderRadius: "5px",
-                margin: "15px auto",
-              }}
-              // onClick={disconnectWallet}
-            >
-              Disconnect
-            </button>
-          </div>
-        )}
+     
+       
 
 
         {/* crerate Btn */}
